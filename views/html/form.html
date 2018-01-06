@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Recipe</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/form.css">
+
+</head>
+<body>
+<h1>Add Your Recipe Here</h1>
+<form action="/newrecipe" method="post">
+	<h3>Recipe:</h3>
+	<label for="recipe_name" >Recipe Name:</label>
+	<input type="text" name="recipe_name" placeholder="enter name">
+	<label for="recipe_link" >Link:</label>
+	<input type="url" name="recipe_link" placeholder="enter link">
+
+	
+	<div>
+		<h3>Ingredients:</h3>
+		<div id=ingredients>
+
+			<div>
+				<input type="text" name="ingredientName" placeholder="enter Ingredient name">
+				<input type="number" step="0.1" name="ingredientAmount">
+				<select name="ingredientUnit">
+				  <option value="tsp">tsp</option>
+				  <option value="tbsp">tbsp</option>
+				  <option value="floz">fl oz</option>
+				  <option value="c">c</option>
+				  <option value="ml">ml</option>
+				  <option value="l">l</option>
+				  <option value="lb">lb</option>
+				  <option value="oz">oz</option>
+				  <option value="mg">mg</option>
+				  <option value="g">g</option>
+				  <option value="kg">kg</option>
+				  <option value="mm">mm</option>
+				  <option value="cm">cm</option>
+				  <option value="m">m</option>
+				  <option value="inch">inch</option>
+				</select>
+			</div>
+			<div>
+				<input type="text" name="ingredientName" placeholder="enter Ingredient name">
+				<input type="number" step="0.1" name="ingredientAmount">
+				<select name="ingredientUnit">
+				  <option value="tsp">tsp</option>
+				  <option value="tbsp">tbsp</option>
+				  <option value="floz">fl oz</option>
+				  <option value="c">c</option>
+				  <option value="ml">ml</option>
+				  <option value="l">l</option>
+				  <option value="lb">lb</option>
+				  <option value="oz">oz</option>
+				  <option value="mg">mg</option>
+				  <option value="g">g</option>
+				  <option value="kg">kg</option>
+				  <option value="mm">mm</option>
+				  <option value="cm">cm</option>
+				  <option value="m">m</option>
+				  <option value="inch">inch</option>
+				</select>
+			</div>
+			<div>
+				<input type="text" name="ingredientName" placeholder="enter Ingredient name">
+				<input type="number" step="0.1" name="ingredientAmount">
+				<select name="ingredientUnit">
+				  <option value="tsp">tsp</option>
+				  <option value="tbsp">tbsp</option>
+				  <option value="floz">fl oz</option>
+				  <option value="c">c</option>
+				  <option value="ml">ml</option>
+				  <option value="l">l</option>
+				  <option value="lb">lb</option>
+				  <option value="oz">oz</option>
+				  <option value="mg">mg</option>
+				  <option value="g">g</option>
+				  <option value="kg">kg</option>
+				  <option value="mm">mm</option>
+				  <option value="cm">cm</option>
+				  <option value="m">m</option>
+				  <option value="inch">inch</option>
+				</select>
+			</div>
+		</div>
+		<button id="addIngredients" type="button">add more ingredients</button>
+	</div>
+	<div>
+		<h3>instructions:</h3>
+		<div id="instructions">
+			<div>
+				<input type="number" name="instructionStep" min="1">
+			</div>
+			<textarea name="instructionDesc"cols="50" rows="5" placeholder="type here"></textarea>
+			<div>
+				<input type="number" name="instructionStep" min="2">
+			</div>
+			<textarea name="instructionDesc"cols="50" rows="5" placeholder="type here"></textarea>
+		</div>
+	</div>
+
+	<button id="addInstruction" type="button">add more instructions</button>
+	 <button type="submit" formmethod="post">Submit</button>
+</form>
+<script type="text/javascript" src="../javascript/form.js"></script>
+</body>
+</html>
