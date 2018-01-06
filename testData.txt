@@ -1,0 +1,46 @@
+"INSERT INTO recipes (name, link)
+	VALUES('alfredo sauce', 'http://allrecipes.com/recipe/22831/alfredo-sauce/'');"
+
+"INSERT INTO ingredients (name, amount,unit)
+	VALUES ('butter', .25 ,'cup');"
+
+"INSERT INTO ingredients (name, amount,unit)
+	VALUES ('heavy cream', 1 ,'cup');"
+
+"INSERT INTO ingredients (name, amount,unit)
+	VALUES ('garlic', 1 ,'clove');"
+
+"INSERT INTO ingredients (name, amount,unit)
+	VALUES ('garlic', 1 ,'clove');"
+
+"INSERT INTO ingredients (name, amount,unit)
+	VALUES ('Grated Parmesan Cheese', 1.25 ,'cup');"
+
+"INSERT INTO ingredients (name, amount,unit)
+	VALUES ('Chopped Fresh Parsley', .25 ,'cup');"
+
+"INSERT INTO ingredientConnection(recipe_id, ingredients_id)
+	VAlUES(SELECT id FROM recipes WHERE name = 'alfredo sauce',
+			SELECT id FROM ingredients WHERE name = 'heavy cream' AND
+				amount = 1 AND unit = 'cup');"
+
+"INSERT INTO ingredientConnection(recipe_id, ingredients_id)
+	VAlUES(SELECT id FROM recipes WHERE name = 'alfredo sauce',
+			SELECT id FROM ingredients WHERE name = 'butter' AND
+				amount = .25 AND unit = 'cup');"
+
+"INSERT INTO ingredientConnection(recipe_id, ingredients_id)
+	VAlUES(SELECT id FROM recipes WHERE name = 'alfredo sauce',
+			SELECT id FROM ingredients WHERE name = 'garlic' AND
+				amount = 1 AND unit = 'clove');"
+
+"INSERT INTO ingredientConnection(recipe_id, ingredients_id)
+	VAlUES(SELECT id FROM recipes WHERE name = 'alfredo sauce',
+			SELECT id FROM ingredients WHERE name = 'Grated Parmesan Cheese' AND amount = 1.50 AND unit = 'cup');"
+
+"INSERT INTO ingredientConnection(recipe_id, ingredients_id)
+	VAlUES(SELECT id FROM recipes WHERE name = 'alfredo sauce',
+			SELECT id FROM ingredients WHERE name = 'Chopped Fresh Parsley' AND amount = .25 AND unit = 'cup');"
+
+"INSERT INTO steps(stepNumber,description,recipe_id)
+	VALUES(1,'Melt butter in a medium saucepan over medium low heat. Add cream and simmer for 5 minutes, then add garlic and cheese and whisk quickly, heating through. Stir in parsley and serve.',SELECT id FROM recipes WHERE name = 'alfredo sauce');"
