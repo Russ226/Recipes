@@ -4,7 +4,7 @@ var recipeId = "";
 var connection = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "pen226",
+	
 	database: "recipeDB",
 	multipleStatements: true
 });
