@@ -6,10 +6,11 @@ function addIngredients(){
 		$("#ingredients").append(
 			"<div>"+ "<input type=\"text\" name=\"ingredientName\"" + " placeholder=\"enter Ingredient name\">"+"<input type=\"number\" step=\"0.1\" name=\"ingredientAmount\">" +
 			"<select name=\"ingredientUnit\">" +
+			"<option value=\"none\">none</option>" +
 			"<option value=\"tsp\">tsp</option>" +
 			"<option value=\"tbsp\">tbsp</option>" +
 			"<option value=\"floz\">fl oz</option>" +
-			"<option value=\"c\">c</option>" +
+			"<option value=\"cup\">cup</option>" +
 			"<option value=\"ml\">ml</option>" +
 			"<option value=\"l\">l</option>" +
 			"<option value=\"lb\">lb</option>" +
