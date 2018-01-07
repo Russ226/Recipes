@@ -4,7 +4,7 @@ var ingredientCounter = 4;
 function addIngredients(){
 	$("#addIngredients").click(function(){
 		$("#ingredients").append(
-			"<div>"+ "<input type=\"text\" name=\"ingredientName\"" + " placeholder=\"enter Ingredient name\">"+"<input type=\"number\" step=\"0.1\" name=\"ingredientAmount\">" +
+			"<div>"+ "<input type=\"text\" name=\"ingredientName\"" + " placeholder=\"enter Ingredient name\">"+"<input type=\"number\" step=\"0.01\" name=\"ingredientAmount\">" +
 			"<select name=\"ingredientUnit\">" +
 			"<option value=\"none\">none</option>" +
 			"<option value=\"tsp\">tsp</option>" +
