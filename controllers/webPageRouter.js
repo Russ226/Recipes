@@ -11,35 +11,28 @@ router.get('/',function(req,res){
 });
 
 router.post('/newrecipe',urlencodedParser,function(req,res){
-		var ingredients = [];
-		var instructions = [];
+		db.connection;
+				
 		var recipe = [req.body.recipe_name, req.body.recipe_link];
-		
+		db.insertRecipe(recipe);
 		
 		for(var i = 0; i < req.body.ingredientName.length; i++){
-			var cur = [req.body.ingredientName[i], req.body.ingredientAmount[i], req.body.ingredientUnit[i]];
-			ingredients.push(cur); 
+			if(req.body.ingredientName[i] != ''){
+				var ingredients = [req.body.ingredientName[i], req.body.ingredientAmount[i], req.body.ingredientUnit[i]];
+				db.insertIngredients(ingredients);
+				db.linkTables(recipe,ingredients);
+			} 
 		}
 
 		for(var i = 0; i < req.body.instructionStep.length; i++){
-			if(req.body.instructionStep[i] != "" && req.body.instructionDesc[i] != ""){
-				var cur = [req.body.instructionStep[i], req.body.instructionDesc[i]];
-				instructions.push(cur); 
+			if(req.body.instructionDesc[i] != ""){
+				var instructions = [req.body.instructionStep[i], req.body.instructionDesc[i]];
+				db.insertInstruction(recipe,instructions);
 			}
 		}
 
 
-		db.connection;
-		db.insertRecipe(recipe);
-		db.insertIngredients(ingredients);
-		db.insertInstruction(instructions);
-
-		for(var i = 0; i < ingredients.length; i++){
-			db.linkTables(recipe,ingredients[i]);
-		}
-
 		
-		//console.log(req.body.ingredientAmount.length);
 		res.send("success");
 });
 
