@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	
+	password: "pen226",
 	database: "recipeDB",
 	multipleStatements: true
 });
@@ -125,9 +125,81 @@ function insertInstruction(recipe,instructions){
 }
 
 
-//selection of recipe
+//selection by recipe name
+function searchByRecipe(recipeName, callback){
+	var recipeSelector = 'SELECT * FROM recipes WHERE name = ?';
+	var connectionSelector = 'SELECT * FROM ingredientConnection WHERE recipe_id = ?';
+	var ingredientSelector = 'SELECT * FROM ingredients WHERE id = ?';
+	var stepsSelector = 'SELECT * FROM steps WHERE recipe_id = ?';
 
+	//recipe table
+	connection.query(recipeSelector, [recipeName], function(err,result){
+		if(err)
+			throw err;
 
+		var recipeId = result[0].id;
+		var recipe = {
+			name: result[0].name,
+			link: result[0].link,
+			ingredients: [],
+			steps: []
+		}
+
+		//console.log('name ' + recipe.name);
+
+		//connection table
+		connection.query(connectionSelector, [recipeId], function(err, result){
+			if(err)
+				throw err;
+			//ingredients table
+		
+			for(var i = 0; i < result.length; i++){
+				connection.query(ingredientSelector, result[i].ingredients_id, function(err, result){
+					if(err)
+						throw err;
+					//console.log(result[0].name);
+					
+
+					var ingredient = {
+						name: result[0].name,
+						amount: result[0].amount,
+						unit: result[0].unit
+					}
+					//console.log(ingredient.name);
+					recipe.ingredients.push(ingredient);
+					
+
+				});
+
+			}
+
+			//steps table
+			connection.query(stepsSelector , [recipeId], function(err, result){
+				console.log('name' + recipe.ingredients.length);
+				if(err)
+					throw err;
+
+				for(var i = 0; i < result.length; i++){
+					var step = {
+						number: result[i].stepNumber,
+						description: result[i].description
+					}
+
+					recipe.steps.push(step);
+				}
+
+				callback(recipe);
+			});
+		});
+	});
+
+}
+
+//selection by ingredient
+function SelectIngredient(ingredient,callback){
+	
+	
+}
 
 
 module.exports = {
@@ -135,5 +207,6 @@ module.exports = {
 	insertRecipe,
 	linkTables,
 	insertIngredients,
-	insertInstruction
+	insertInstruction,
+	searchByRecipe
 }

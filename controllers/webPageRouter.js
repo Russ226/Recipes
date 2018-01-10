@@ -36,4 +36,14 @@ router.post('/newrecipe',urlencodedParser,function(req,res){
 		res.send("success");
 });
 
+
+router.get('/search', function(req,res){
+	db.connection;
+	var result = db.searchByRecipe('Alfredo Sauce', function(recipe){
+		res.send(recipe);
+	});
+
+	
+});
+
 module.exports = router;
